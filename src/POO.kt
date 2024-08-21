@@ -1,0 +1,33 @@
+class operaciones_mat(var n1: Double, var n2:Double){
+    fun suma(){
+        var suma = n1+n2
+        println("Suma: ${suma}")
+    }
+
+    fun resta(){
+        var resta = n1-n2
+        println("Resta: ${resta}")
+    }
+
+    fun multipli():Double{
+        return n1*n2
+    }
+
+    fun div():Double{
+        return n1/n2
+    }
+
+    fun raiz(n1:Double){
+        var r = Math.sqrt(this.n1)
+        println("Raiz: ${r}")
+    }
+
+    fun cuadrado(n2:Double):Double{
+        return Math.pow(this.n2, 2.0)
+    }
+
+    override fun toString(): String {
+        return "operaciones_mat(n1=$n1, n2=$n2)"
+    }
+
+}
