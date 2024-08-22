@@ -17,12 +17,13 @@ class OperacionesMat(var n1: Double, var n2:Double){
         return n1/n2
     }
 
-    fun raiz(n1:Double){
+    fun raiz(): Double {
         val r = Math.sqrt(this.n1)
         println("Raiz: $r")
+        return r
     }
 
-    fun cuadrado(n2:Double):Double{
+    fun cuadrado(): Double {
         return Math.pow(this.n2, 2.0)
     }
 

@@ -8,7 +8,9 @@ fun main(){
 
     val operacionesRetornoFlotante: MutableList<()-> Double> = mutableListOf(
         operaciones::multipli,
-        operaciones::div
+        operaciones::div,
+        operaciones::raiz,
+        operaciones::cuadrado
     )
 
     for(operacion in operacionesLista){
