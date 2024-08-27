@@ -1,3 +1,4 @@
+import kotlin.random.Random
 // Función principal que ejecuta el programa
 fun main() {
     cabinaArte()
@@ -22,25 +23,26 @@ fun main() {
             1 -> {
                 println("Ingrese el número de cabina (1 de ${cabinas.size}):")
                 val cabinaId = readln().toInt()
-                println("Ingrese el tipo de llamada (1: Local, 2: Larga Distancia, 3: Celular):")
-                val tipo = readln().toInt()
-                println("Ingrese la duración de la llamada en minutos:")
-                val duracion = readln().toInt()
-
-                // Registrar la llamada en la cabina seleccionada
-                // Se ubica un indice detras el id de la cabina y luego llama la funcion. Pasando dentro de ella las variables
-                cabinas[cabinaId - 1].registrar(tipo, duracion)
-            }
-            2 -> {
-                println("Ingrese el número de cabina para mostrar detalles:")
-                val cabinaId = readln().toInt()
-
-                // Muestra información de la cabina
-                // Se ubica un indice detras el id de la cabina y luego llama la funcion para imprimir la información
                 if (cabinaId in 1..cabinas.size) {
-                    cabinas[cabinaId - 1].informacion()
+                    println("Ingrese el tipo de llamada (1: Local, 2: Larga Distancia, 3: Celular):")
+                    val tipo = readln().toInt()
+
+                    // Generar duración aleatoria entre 1 y 60 minutos
+                    val duracion = Random.nextInt(1, 61)
+
+                    // Registrar la llamada en la cabina seleccionada
+                    // Se ubica un indice detras el id de la cabina y luego llama la funcion. Pasando dentro de ella las variables
+                    cabinas[cabinaId - 1].registrar(tipo, duracion)
+                    println("Duración de la llamada: $duracion minutos")
                 } else {
                     println("Número de cabina no válido.")
+                }
+            }
+            2 -> {
+                // Mostrar información de todas las cabinas
+                for (cabina in cabinas) {
+                    cabina.informacion()
+                    println() // Separador entre cabinas
                 }
             }
             3 -> {
