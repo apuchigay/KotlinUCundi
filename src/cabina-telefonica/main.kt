@@ -1,14 +1,9 @@
 // Función principal que ejecuta el programa
 fun main() {
     cabinaArte()
-    print("Ingrese el número de cabinas: ")
-    val n = readln().toInt()
-
     // Crear una lista mutable de cabinas. Almacena según la cantidad definida al iniciar el programa
     val cabinas = mutableListOf<Cabina>()
-    for (i in 1..n) {
-        cabinas.add(Cabina(i)) //add es una funcion para añadir una nueva cabina dentro de la lista según su identificador i
-    }
+    cabinas.add(Cabina(1))
 
     // Ejecuta el programa mientras la condicion sea verdadera
     while (true) {
@@ -18,13 +13,14 @@ fun main() {
                 2. Mostrar información detallada de una cabina
                 3. Mostrar consolidado total
                 4. Reiniciar una cabina
-                5. Salir
+                5. Añadir más cabinas
+                6. Salir
             """.trimIndent()) // Eimina los espacios en blanco al principio de una nueva linea
         print("Seleccione una opción: ")
 
         when (readln().toInt()) { // Inicia el condicional según la eleccion del usuario
             1 -> {
-                println("Ingrese el número de cabina:")
+                println("Ingrese el número de cabina (1 de ${cabinas.size}):")
                 val cabinaId = readln().toInt()
                 println("Ingrese el tipo de llamada (1: Local, 2: Larga Distancia, 3: Celular):")
                 val tipo = readln().toInt()
@@ -85,10 +81,24 @@ fun main() {
                     println("Número de cabina no válido.")
                 }
             }
-            5 -> break  // Sale del bucle y finaliza el programa
+            5 -> {
+                // Añadir nuevas cabinas
+                println("¿Cuántas cabinas desea añadir?")
+                val cantidad = readln().toInt()
+
+                for (i in 1..cantidad) {
+                    val nuevaCabinaId = cabinas.size + 1
+                    cabinas.add(Cabina(nuevaCabinaId))
+                    println("Cabina #$nuevaCabinaId añadida.")
+                }
+            }
+            6 -> break  // Sale del bucle y finaliza el programa
             else -> println("Opción no válida.")
         }
     }
 
     println("Gracias por usar nuestros servicios. Adios")
 }
+
+// Aleatorio para minutos
+// consolidado cabina por cabina
