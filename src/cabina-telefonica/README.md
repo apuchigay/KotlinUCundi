@@ -2,13 +2,14 @@
 
 ## Descripción
 
-El siguiente programa permite gestionar a una empresa ficticia los gastos telefonicos de esta. Cuenta con la cantidad N de cabinas (dadas por el usuario) y la cual permite realizar ciertas funciones.
+El siguiente programa permite gestionar a una empresa ficticia los gastos telefonicos de esta. Inicia con una cabina la ejecución del programa y posteriormente se le da la opción de añadir n cantidad de cabinas si así lo requiere
 ## Funcionalidades
 
-- **Registrar una llamada:** Permite ingresar la duración y el tipo de llamada (local, larga distancia o celular) para cada cabina.
-- **Mostrar información detallada:** Muestra el número de llamadas realizadas, la duración total de las llamadas y el costo total para una cabina específica.
+- **Registrar una llamada:** Permite seleccionar una cabina y el tipo de llamada (local, larga distancia o celular). La duración de la llamada será un valor aleatorio entre 1 y 60 (en minutos)
+- **Mostrar información detallada:** Muestra el número de llamadas realizadas, la duración total de las llamadas y el costo total para todas las cabinas dentro del listado de estas.
 - **Consolidado total:** Proporciona un resumen de todas las cabinas, incluyendo el costo total, el número total de llamadas y la duración total.
-- **Reiniciar cabina:** Permite restablecer todos los valores de una cabina en especifico a cero. El usuario escoge la cabina
+- **Reiniciar cabina:** Permite restablecer todos los valores de una cabina en especifico a cero. El usuario escoge la cabina.
+- **Añadir cabina**: Permite al usuario añadir más cabinas en caso de ser necesario. Digitará cuantas cabinas desea añadir nuevas 
 
 ## Tarifas
 
