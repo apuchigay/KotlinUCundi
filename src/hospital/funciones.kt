@@ -1,0 +1,4 @@
+package hospital
+
+class funciones {
+}
