@@ -6,6 +6,8 @@ import hospital.Paciente
 class RegistroServicio {
     // Listado definido de especialidades
     val especialidades = listOf("Cirugía", "Oftalmología", "Pediatría", "Cardiología", "Neurología", "Dermatología")
+    val tipoSangre = listOf("A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-")
+    val sexo = listOf("M", "F")
     // Listado de las entidades del sistema
     val empleados = mutableListOf<Empleado>()
     val medicos = mutableListOf<Medico>()
@@ -37,6 +39,17 @@ class RegistroServicio {
     fun registrarCita(paciente: Paciente, medico: Medico, fechaCita: String, horaCita: String) {
         val cita = CitaMedica(paciente, medico, fechaCita, horaCita)
         citas.add(cita)
+    }
+
+    fun listarPacientesPorMedico(medico: Medico) {
+        val pacientesPorMedico = citas.filter { it.medico == medico }.map { it.paciente }
+
+        if (pacientesPorMedico.isEmpty()) {
+            println("No se encontraron pacientes para el médico: ${medico.nombre} ${medico.apellido}")
+        } else {
+            println("Pacientes atendidos por el Dr. ${medico.nombre} ${medico.apellido}:")
+            pacientesPorMedico.forEach { println("${it.nombre} ${it.apellido}") }
+        }
     }
 }
 
