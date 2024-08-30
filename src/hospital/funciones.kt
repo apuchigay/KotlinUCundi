@@ -13,6 +13,8 @@ fun registrarEmpleado(registroServicio: RegistroServicio) {
     val fecNacimiento = readln()
     print("Dirección: ")
     val direccion = readln()
+
+    // Validador de ciudad origen
     print("Ciudad de origen: ")
     val ciudadOrig = readln()
     print("Código de empleado: ")
@@ -162,19 +164,41 @@ fun registrarPaciente(registroServicio: RegistroServicio) {
     val fecNacimiento = readln()
     print("Dirección: ")
     val direccion = readln()
-    print("Ciudad de procedencia: ")
-    val ciudadOrig = readln()
+
+    //Validador ciudad origen
+    println("Seleccione la ciudad de origen:")
+    registroServicio.ciudadOrigen.forEachIndexed { index, ciudad ->
+        println("${index + 1}. $ciudad")
+    }
+    val ciudadIndex = readln().toInt() - 1
+    val ciudadOrig = registroServicio.ciudadOrigen[ciudadIndex]
+
     print("Número de historia clínica: ")
     val nroHistClinica = readln().toInt()
-    print("Sexo: ")
-    val sexo = readln()
-    print("Grupo sanguíneo: ")
-    val grupSangre = readln()
-    print("Lista de medicamentos a los que es alérgico: ")
-    val medicAlergico = readln()
+
+    // Validador listado sexo del paciente
+    println("Seleccionar sexo:")
+    registroServicio.sexos.forEachIndexed { index, sexo ->
+        println("${index + 1}. $sexo")
+    }
+    val sexo = registroServicio.sexos[readln().toInt() - 1]
+
+    // Validador listado grupo sanguineo
+    println("Seleccione el grupo sanguíneo del paciente:")
+    registroServicio.tipoSangre.forEachIndexed { index, tipo ->
+        println("${index + 1}. $tipo")
+    }
+    val grupoSangre = registroServicio.tipoSangre[readln().toInt() - 1]
+
+    // Validador de medicamentos alergico
+    println("Seleccione un medicamento al que sea alergico: ")
+    registroServicio.alergiaMedicamentos.forEachIndexed { index, tipo ->
+        println("${index+1}. $tipo")
+    }
+    val medicamentoAlergico = registroServicio.alergiaMedicamentos[readln().toInt()-1]
 
     // Crear el objeto Paciente y registrarlo
-    val paciente = Paciente(nroCC, nombre, apellido, fecNacimiento, direccion, ciudadOrig, nroHistClinica, sexo, grupSangre, medicAlergico)
+    val paciente = Paciente(nroCC, nombre, apellido, fecNacimiento, direccion, ciudadOrig, nroHistClinica, sexo, grupoSangre, medicamentoAlergico)
     registroServicio.registrarPaciente(paciente)
     println("Paciente registrado exitosamente.")
 }

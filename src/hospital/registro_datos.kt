@@ -7,7 +7,9 @@ class RegistroServicio {
     // Listado definido de especialidades
     val especialidades = listOf("Cirugía", "Oftalmología", "Pediatría", "Cardiología", "Neurología", "Dermatología")
     val tipoSangre = listOf("A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-")
-    val sexo = listOf("M", "F")
+    val sexos = listOf("Masculino", "Femenino")
+    val alergiaMedicamentos = listOf("Penicilinas", "Cefalosporinas", "Aspirina", "Ibuprofeno", "Sulfamidas", "Anestésicos")
+    val ciudadOrigen = listOf("Bogotá", "Chía", "Zipaquira", "Cajica", "Sesquile", "Cota", "Sopó")
     // Listado de las entidades del sistema
     val empleados = mutableListOf<Empleado>()
     val medicos = mutableListOf<Medico>()
