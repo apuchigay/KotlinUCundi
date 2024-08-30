@@ -1,13 +1,13 @@
 package hospital
 
-open class Persona(val nroDni: Int,
+open class Persona(val nroCC: Int,
                    val nombre: String,
                    val apellido:String,
                    val fecNacimiento: String,
                    val direccion: String,
                    var ciudadOrig: String)
 
-class Paciente(nroDni: Int,
+class Paciente(nroCC: Int,
                nombre: String,
                apellido:String,
                fecNacimiento: String,
@@ -16,4 +16,4 @@ class Paciente(nroDni: Int,
                val nroHistClinica: Int,
                val sexo: String,
                val grupSangre: String,
-               val medicAlergico: String) : Persona(nroDni, nombre, apellido, fecNacimiento, direccion, ciudadOrig)
+               val medicAlergico: String) : Persona(nroCC, nombre, apellido, fecNacimiento, direccion, ciudadOrig)

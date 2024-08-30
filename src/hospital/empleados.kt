@@ -1,6 +1,6 @@
 package hospital
 
-open class Empleado(nroDni: Int,
+open class Empleado(nroCC: Int,
                     nombre: String,
                     apellido:String,
                     fecNacimiento: String,
@@ -10,9 +10,9 @@ open class Empleado(nroDni: Int,
                     val nroHorasExtra: Int,
                     val fecIngreso: String,
                     val area: String,
-                    val cargo:String) : Persona(nroDni, nombre, apellido, fecNacimiento, direccion, ciudadOrig)
+                    val cargo:String) : Persona(nroCC, nombre, apellido, fecNacimiento, direccion, ciudadOrig)
 
-open class Empleadoxplanilla(nroDni: Int,
+open class Empleadoxplanilla(nroCC: Int,
                              nombre: String,
                              apellido:String,
                              fecNacimiento: String,
@@ -24,9 +24,9 @@ open class Empleadoxplanilla(nroDni: Int,
                              area: String,
                              cargo:String,
                              val salarioMensual: Double,
-                             val porcentajeAdicional: Double) : Empleado(nroDni, nombre, apellido, fecNacimiento, direccion, ciudadOrig, codEmpleado, nroHorasExtra, fecIngreso, area, cargo)
+                             val porcentajeAdicional: Double) : Empleado(nroCC, nombre, apellido, fecNacimiento, direccion, ciudadOrig, codEmpleado, nroHorasExtra, fecIngreso, area, cargo)
 
-class EmpleadoEventual(nroDni: Int,
+class EmpleadoEventual(nroCC: Int,
                        nombre: String,
                        apellido:String,
                        fecNacimiento: String,
@@ -39,9 +39,9 @@ class EmpleadoEventual(nroDni: Int,
                        cargo:String,
                        val honorariosxHora: Double,
                        val nroHorasTotales: Int,
-                       val fechaFinContrato: String) : Empleado(nroDni, nombre, apellido, fecNacimiento, direccion, ciudadOrig, codEmpleado, nroHorasExtra, fecIngreso, area, cargo)
+                       val fechaFinContrato: String) : Empleado(nroCC, nombre, apellido, fecNacimiento, direccion, ciudadOrig, codEmpleado, nroHorasExtra, fecIngreso, area, cargo)
 
-class Medico(nroDni: Int,
+class Medico(nroCC: Int,
              nombre: String,
              apellido:String,
              fecNacimiento: String,
@@ -56,4 +56,4 @@ class Medico(nroDni: Int,
              porcentajeAdicional: Double,
              val especialidad: String,
              val servicio: String,
-             val nroConsultorio: Int) : Empleadoxplanilla(nroDni, nombre, apellido, fecNacimiento, direccion, ciudadOrig, codEmpleado, nroHorasExtra, fecIngreso, area, cargo, salarioMensual, porcentajeAdicional)
+             val nroConsultorio: Int) : Empleadoxplanilla(nroCC, nombre, apellido, fecNacimiento, direccion, ciudadOrig, codEmpleado, nroHorasExtra, fecIngreso, area, cargo, salarioMensual, porcentajeAdicional)

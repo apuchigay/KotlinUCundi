@@ -1,8 +1,5 @@
 package hospital
 import RegistroServicio
-import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 
 fun main() {
     val registroServicio = RegistroServicio()
@@ -25,7 +22,7 @@ fun main() {
             2 -> registrarMedico(registroServicio)
             3 -> registrarPaciente(registroServicio)
             4 -> registrarCitaMedica(registroServicio)
-            5 -> println("\nSe vienen cositas proximamente. Tu espera\n")
+            5 -> listarMedicosPorEspecialidad(registroServicio)
             6 -> println("\nSe vienen cositas proximamente. Tu espera\n")
             7 -> break
         }
@@ -34,8 +31,8 @@ fun main() {
 
 fun registrarEmpleado(registroServicio: RegistroServicio) {
     println("Ingrese los datos del empleado:")
-    print("Número de DNI: ")
-    val nroDni = readln().toInt()
+    print("Número de C.C.: ")
+    val nroCC = readln().toInt()
     print("Nombre: ")
     val nombre = readln()
     print("Apellido: ")
@@ -68,7 +65,7 @@ fun registrarEmpleado(registroServicio: RegistroServicio) {
         val porcentajeAdicional = readln().toDouble()
 
         // Crear un nuevo empleado por planilla
-        val empleado = Empleadoxplanilla(nroDni, nombre, apellido, fecNacimiento, direccion, ciudadOrig,
+        val empleado = Empleadoxplanilla(nroCC, nombre, apellido, fecNacimiento, direccion, ciudadOrig,
             codEmpleado, nroHorasExtra, fecIngreso, area, cargo,
             salarioMensual, porcentajeAdicional)
         registroServicio.registrarEmpleado(empleado)
@@ -81,7 +78,7 @@ fun registrarEmpleado(registroServicio: RegistroServicio) {
         val fechaFinContrato = readln()
 
         // Crear un nuevo empleado eventual
-        val empleado = EmpleadoEventual(nroDni, nombre, apellido, fecNacimiento, direccion, ciudadOrig,
+        val empleado = EmpleadoEventual(nroCC, nombre, apellido, fecNacimiento, direccion, ciudadOrig,
             codEmpleado, nroHorasExtra, fecIngreso, area, cargo,
             honorariosxHora, nroHorasTotales, fechaFinContrato)
         registroServicio.registrarEmpleado(empleado)
@@ -92,8 +89,8 @@ fun registrarEmpleado(registroServicio: RegistroServicio) {
 
 fun registrarMedico(registroServicio: RegistroServicio) {
     println("Ingrese los datos del médico:")
-    print("Número de DNI: ")
-    val nroDni = readln().toInt()
+    print("Número de C.C.: ")
+    val nroCC = readln().toInt()
     print("Nombre: ")
     val nombre = readln()
     print("Apellido: ")
@@ -133,7 +130,7 @@ fun registrarMedico(registroServicio: RegistroServicio) {
     val porcentajeAdicional = readln().toDouble()
 
     // Crear el objeto Medico y registrarlo
-    val medico = Medico(nroDni, nombre, apellido, fecNacimiento, direccion, ciudadOrig, codEmpleado, nroHorasExtra, fecIngreso, area, cargo, salarioMensual, porcentajeAdicional, especialidadSeleccionada, servicio, nroConsultorio)
+    val medico = Medico(nroCC, nombre, apellido, fecNacimiento, direccion, ciudadOrig, codEmpleado, nroHorasExtra, fecIngreso, area, cargo, salarioMensual, porcentajeAdicional, especialidadSeleccionada, servicio, nroConsultorio)
     registroServicio.registrarMedico(medico)
     println("Médico registrado exitosamente.")
 }
@@ -152,7 +149,7 @@ fun registrarCitaMedica(registroServicio: RegistroServicio) {
     println("Ingrese el número de DNI del paciente:")
     val dniPaciente = readln().toIntOrNull()
 
-    val paciente = registroServicio.pacientes.find { it.nroDni == dniPaciente }
+    val paciente = registroServicio.pacientes.find { it.nroCC == dniPaciente }
     if (paciente == null) {
         println("Paciente no encontrado.")
         return
@@ -183,8 +180,8 @@ fun registrarCitaMedica(registroServicio: RegistroServicio) {
 
 fun registrarPaciente(registroServicio: RegistroServicio) {
     println("Ingrese los datos del paciente:")
-    print("Número de DNI: ")
-    val nroDni = readln().toInt()
+    print("Número de C.C.: ")
+    val nroCC = readln().toInt()
     print("Nombre: ")
     val nombre = readln()
     print("Apellido: ")
@@ -205,7 +202,18 @@ fun registrarPaciente(registroServicio: RegistroServicio) {
     val medicAlergico = readln()
 
     // Crear el objeto Paciente y registrarlo
-    val paciente = Paciente(nroDni, nombre, apellido, fecNacimiento, direccion, ciudadOrig, nroHistClinica, sexo, grupSangre, medicAlergico)
+    val paciente = Paciente(nroCC, nombre, apellido, fecNacimiento, direccion, ciudadOrig, nroHistClinica, sexo, grupSangre, medicAlergico)
     registroServicio.registrarPaciente(paciente)
     println("Paciente registrado exitosamente.")
+}
+
+fun listarMedicosPorEspecialidad(registroServicio: RegistroServicio) {
+    println("Seleccione la especialidad para listar médicos:")
+    registroServicio.especialidades.forEachIndexed { index, especialidad ->
+        println("${index + 1}. $especialidad")
+    }
+    val opcionEspecialidad = readln().toInt()
+    val especialidadSeleccionada = registroServicio.especialidades[opcionEspecialidad - 1]
+
+    registroServicio.listarMedicosPorEspecialidad(especialidadSeleccionada)
 }
