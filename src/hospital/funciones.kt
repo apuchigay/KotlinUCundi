@@ -1,7 +1,9 @@
 package hospital
 import RegistroServicio
 
+// Funcion para registrar un empleado
 fun registrarEmpleado(registroServicio: RegistroServicio) {
+    // Solicitud de datos del empleado
     println("Ingrese los datos del empleado:")
     print("Número de C.C.: ")
     val nroCC = readln().toInt()
@@ -15,8 +17,13 @@ fun registrarEmpleado(registroServicio: RegistroServicio) {
     val direccion = readln()
 
     // Validador de ciudad origen
-    print("Ciudad de origen: ")
-    val ciudadOrig = readln()
+    println("Seleccione la ciudad de origen:")
+    registroServicio.ciudadOrigen.forEachIndexed { index, ciudad ->
+        println("${index + 1}. $ciudad")
+    }
+    val ciudadIndex = readln().toInt() - 1
+    val ciudadOrig = registroServicio.ciudadOrigen[ciudadIndex]
+
     print("Código de empleado: ")
     val codEmpleado = readln().toInt()
     print("Número de horas extras: ")
@@ -61,6 +68,7 @@ fun registrarEmpleado(registroServicio: RegistroServicio) {
     println("Empleado registrado exitosamente.")
 }
 
+// Funcion para registar un medico
 fun registrarMedico(registroServicio: RegistroServicio) {
     println("Ingrese los datos del médico:")
     print("Número de C.C.: ")
@@ -73,8 +81,15 @@ fun registrarMedico(registroServicio: RegistroServicio) {
     val fecNacimiento = readln()
     print("Dirección: ")
     val direccion = readln()
-    print("Ciudad de procedencia: ")
-    val ciudadOrig = readln()
+
+    // Validador de ciudad origen
+    println("Seleccione la ciudad de origen:")
+    registroServicio.ciudadOrigen.forEachIndexed { index, ciudad ->
+        println("${index + 1}. $ciudad")
+    }
+    val ciudadIndex = readln().toInt() - 1
+    val ciudadOrig = registroServicio.ciudadOrigen[ciudadIndex]
+
     print("Código de Empleado: ")
     val codEmpleado = readln().toInt()
     print("Número de horas extra: ")
@@ -109,6 +124,7 @@ fun registrarMedico(registroServicio: RegistroServicio) {
     println("Médico registrado exitosamente.")
 }
 
+// Funcion para registrar cita medica
 fun registrarCitaMedica(registroServicio: RegistroServicio) {
     if (registroServicio.pacientes.isEmpty()) {
         println("No hay pacientes registrados.")
@@ -152,6 +168,7 @@ fun registrarCitaMedica(registroServicio: RegistroServicio) {
     println("Cita médica registrada exitosamente.")
 }
 
+// Funcion para registrar paciente
 fun registrarPaciente(registroServicio: RegistroServicio) {
     println("Ingrese los datos del paciente:")
     print("Número de C.C.: ")
@@ -214,6 +231,7 @@ fun listarMedicosPorEspecialidad(registroServicio: RegistroServicio) {
     registroServicio.listarMedicosPorEspecialidad(especialidadSeleccionada)
 }
 
+// Funcion para listar paciente por medico
 fun listarPacientesPorMedico(registroServicio: RegistroServicio) {
     if (registroServicio.medicos.isEmpty()) {
         println("No hay médicos registrados en el sistema.")

@@ -4,6 +4,7 @@ import RegistroServicio
 fun main() {
     val registroServicio = RegistroServicio()
     while (true) {
+        // Menu de opciones. Aparecerá siempre que la condicion sea verdadera
         print("""
             ---------------- // Menu del hospital // ----------------
             1. Registrar un empleado
@@ -17,6 +18,7 @@ fun main() {
             Seleccione una opción:
         """.trimIndent())
 
+        // Leer la opción seleccionada por el usuario
         when (readln().toInt()) {
             1 -> registrarEmpleado(registroServicio)
             2 -> registrarMedico(registroServicio)
